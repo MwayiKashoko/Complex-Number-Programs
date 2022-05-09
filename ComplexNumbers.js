@@ -51,12 +51,14 @@ var fourierBallY = 0;
 
 var mandelbrotIterations = document.getElementById("numberofmandelbrotiterations");
 var mandelbrotSetSlider = document.getElementById("mandelbrotsetslider");
+var mandelbrotButton = document.getElementById("mandelbrotbutton")
 
 var juliaSetIterations = document.getElementById("numberofjuliaiterations");
 var juliaSetSlider = document.getElementById("juliasetslider");
 var juliaSetReal = document.getElementById("juliasetreal");
 var juliaSetImaginary = document.getElementById("juliasetimaginary");
 var juliaButton = document.getElementById("juliabutton");
+var juliaSetClick = document.getElementById("juliasetclick");
 
 //Audio for Fourier Series
 var ctx = new AudioContext();
@@ -121,7 +123,7 @@ mandelbrotSetRadio.onclick = function() {
 	mandelbrotDraw(mandelbrotSetSlider.value);
 }
 
-mandelbrotSetSlider.onclick = function() {
+mandelbrotButton.onclick = function() {
 	mandelbrotDraw(mandelbrotSetSlider.value, 1, 1);
 }
 
@@ -140,10 +142,6 @@ juliaSetRadio.onclick = function() {
 
 	osc = null;
 
-	juliaSetDraw(parseFloat(juliaSetReal.value), parseFloat(juliaSetImaginary.value), juliaSetSlider.value);
-}
-
-juliaSetSlider.onclick = function() {
 	juliaSetDraw(parseFloat(juliaSetReal.value), parseFloat(juliaSetImaginary.value), juliaSetSlider.value);
 }
 
@@ -219,6 +217,14 @@ document.addEventListener("mousemove", function(event) {
 		let mouseY = event.clientY-7;
 
 		setComplexPointCoordinates(mouseX, mouseY);
+	}
+});
+
+canvas.addEventListener("click", function(event) {
+	if (juliaSetRadio.checked && juliaSetClick.checked) {
+		juliaSetDraw((event.clientX-width/2)/(width/4), -(event.clientY-height/2)/(height/4), juliaSetSlider.value);
+		juliaSetReal.value = (event.clientX-width/2)/(width/4);
+		juliaSetImaginary.value = -(event.clientY-height/2)/(height/4);
 	}
 });
 
