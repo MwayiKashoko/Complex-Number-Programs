@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Complex Numbers </title>
+    
+    <style>
+      body {
+        background-color: gray;
+        user-select: none;
+      }
 
+      #canvas {
+       background-color: black;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <canvas width="500" height="500" id="canvas"></canvas>
+
+    <input type="radio" name="type" id="complexpointradio" checked="true"> Complex Point
+    <input type="radio" name="type" id="taylorseriesradio"> Taylor Series
+    <input type="radio" name="type" id="fourierseriesradio"> Fourier Series
+    <input type="radio" name="type" id="mandelbrotsetradio"> Mandelbrot Set
+    <input type="radio" name="type" id="juliasetradio"> Make Your Own Julia Set
+
+    <input type="checkbox" id="complexpoint" checked="true" class="complexpoint"> <span class="complexpoint"> Enable Point </span>
+    <input type="checkbox" id="magnitudebutton" class="complexpoint"> <span class="complexpoint"> Enable Magnitude Line </span>
+    <input type="checkbox" id="pythagoreantheorembutton" class="complexpoint"> <span class="complexpoint"> Enable Pythagorean Theorem Button </span>
+    <input type="checkbox" id="anglebutton" class="complexpoint">  <span class="complexpoint"> Enable Angle Shower </span>
+
+    <input type="radio" id="degreesbutton" checked="true" name="mode" class="complexpoint"> <span style="user-select: none;" class="complexpoint"> Degrees </span>
+    <input type="radio" id="radiansbutton" name="mode" class="complexpoint"> <span style="user-select: none;" class="complexpoint"> Radians </span>
+
+    <br> <input type="range" min="1" max="30" value = "1" id="taylorseriesslider" class="taylorseries"> <span class="taylorseries"> Amount of Terms in the Taylor Series (1-30) </span>
+
+    <input type="checkbox" class="fourierseries" id="fourierseriesline"> <span class="fourierseries"> Line </span>
+    <button id = "fourierserieslinebutton" class="fourierseries"> Play Line </button>
+    <input type="checkbox" class="fourierseries" id="fourierseriesparabola"> <span class="fourierseries"> Parabola </span>
+    <button id = "fourierseriesparabolabutton" class="fourierseries"> Play Parabola </button>
+    <input type="checkbox" class="fourierseries" id="fourierseriessign"> <span class="fourierseries"> Signum function </span>
+    <button id = "fourierseriessignbutton" class="fourierseries"> Play Sign </button>
+    <input type="checkbox" class="fourierseries" id="fourierseriesabsolutevalue"> <span class="fourierseries"> Absolute Value </span>
+    <button id = "fourierseriesabsolutevaluebutton" class="fourierseries"> Play Absolute Value </button>
+
+    <span id="numberoffourierterms" class="fourierseries"> </span> <input type="range" min="1" max="50" value="1" id="fourierseriesslider" class="fourierseries"> <span class="fourierseries"> Amount of Terms in the Fourier Series (1-50)</span>
+
+    <span id="numberofmandelbrotiterations" class="mandelbrotset"> </span> <input type="range" min="1" max="1000" value="50" id="mandelbrotsetslider" class="mandelbrotset"> <span class="mandelbrotset"> Amount of iterations in the Mandelbrot Set </span>
+
+    <span id="numberofjuliaiterations" class="juliaset"> </span> <input type="range" min="1" max="1000" value="50" id="juliasetslider" class="juliaset"> <span class="juliaset"> Amount of iterations in the Julia Set </span>
+    <input type="text" value="0" id="juliasetreal" placeholder="Number between -2 and 2" class="juliaset"> <input type="textt" value="0.8" id="juliasetimaginary" placeholder="Number between -2 and 2" class="juliaset">
+
+    <p id="description" class="complexpoint">Complex Number in Standard Form: 0 <br> Complex Exponential Form: 0 <br> Complex Trigonometric Form</p>
+    <p id="taylorseriesterms" class="taylorseries"></p>
+    
+    <script src="ComplexNumbers.js"></script>
+  </body>
+</html>
