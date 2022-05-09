@@ -55,7 +55,8 @@ var mandelbrotSetSlider = document.getElementById("mandelbrotsetslider");
 var juliaSetIterations = document.getElementById("numberofjuliaiterations");
 var juliaSetSlider = document.getElementById("juliasetslider");
 var juliaSetReal = document.getElementById("juliasetreal");
-var juliaSetImaginary = document.getElementById("juliasetimaginary")
+var juliaSetImaginary = document.getElementById("juliasetimaginary");
+var juliaButton = document.getElementById("juliabutton");
 
 //Audio for Fourier Series
 var ctx = new AudioContext();
@@ -143,6 +144,10 @@ juliaSetRadio.onclick = function() {
 }
 
 juliaSetSlider.onclick = function() {
+	juliaSetDraw(parseFloat(juliaSetReal.value), parseFloat(juliaSetImaginary.value), juliaSetSlider.value);
+}
+
+juliaButton.onclick = function() {
 	juliaSetDraw(parseFloat(juliaSetReal.value), parseFloat(juliaSetImaginary.value), juliaSetSlider.value);
 }
 
