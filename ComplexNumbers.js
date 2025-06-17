@@ -199,6 +199,15 @@ function drawLines() {
 	}
 }
 
+const getMousePos = (evt) => {
+	const rect = canvas.getBoundingClientRect();
+
+	return {
+		x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+		y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+	};
+}
+
 canvas.addEventListener("mousedown", function() {
 	if (complexPoint.checked) {
 		mousedown = true;
@@ -213,18 +222,20 @@ document.addEventListener("mouseup", function() {
 
 document.addEventListener("mousemove", function(event) {
 	if (mousedown && complexPoint.checked) {
-		let mouseX = event.clientX-7;
-		let mouseY = event.clientY-7;
+		let m = getMousePos(event);
+		let mouseX = m.x
+		let mouseY = m.y;
 
 		setComplexPointCoordinates(mouseX, mouseY);
 	}
 });
 
 canvas.addEventListener("click", function(event) {
+	let m = getMousePos(event);
 	if (juliaSetRadio.checked && juliaSetClick.checked) {
-		juliaSetDraw((event.clientX-width/2)/(width/4), -(event.clientY-height/2)/(height/4), juliaSetSlider.value);
-		juliaSetReal.value = (event.clientX-width/2)/(width/4);
-		juliaSetImaginary.value = -(event.clientY-height/2)/(height/4);
+		juliaSetDraw((m.x-width/2)/(width/4), -(m.y-height/2)/(height/4), juliaSetSlider.value);
+		juliaSetReal.value = (m.x-width/2)/(width/4);
+		juliaSetImaginary.value = -(m.y-height/2)/(height/4);
 	}
 });
 
